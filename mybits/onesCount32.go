@@ -1,49 +1,32 @@
 package mybits
 
-func Pow(n int, exp int) int {
-	if exp < 0 { // handle negative exponents
-		n = 1 / n
-		exp = -exp
-	}
-	result := 1
-	for i := 0; i < exp; i++ {
-		result *= n
-	}
-	return result
-}
-
 func OnesCount32(x uint32) int {
-	remainders := []int{}
-	d := x
 	onesCount := 0
-	for d > 0 {
-		remainders = append(remainders, int(d%2))
-		d = d / 2
-	}
-	for i := 0; i <= len(remainders); i++ {
-		if i == 1 {
-			onesCount++
-		}
+	for x > 0 {
+		x &= x - 1
+		onesCount++
 	}
 	return onesCount
 }
 
 func Len32(x uint32) int {
-	remainders := []int{}
-	d := x
 	zerosCount := 0
-	oneStarted := false
-	for d > 0 {
-		remainders = append(remainders, int(d%2))
-		d = d / 2
-	}
-	for i := 0; i <= len(remainders); i++ {
-		if i == 1 {
-			oneStarted = true
-		}
-		if i == 0 && oneStarted {
-			zerosCount++
-		}
+	for x > 0 {
+		x >>= 1
+		zerosCount++
 	}
 	return zerosCount
+}
+
+func RotateLeft32(x uint32, k int) uint32 {
+	if k > 0 {
+		for i := 1; i <= k; i++ {
+			x <<= 1
+		}
+	} else if k < 0 {
+		for i := -1; i <= k; i-- {
+			x >>= 1
+		}
+	}
+	return x
 }
