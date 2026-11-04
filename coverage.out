@@ -1,0 +1,20 @@
+mode: set
+goprimer/myhex/helper.go:3.36,4.26 1 1
+goprimer/myhex/helper.go:4.26,6.3 1 1
+goprimer/myhex/helper.go:7.2,7.26 1 1
+goprimer/myhex/helper.go:7.26,9.3 1 1
+goprimer/myhex/helper.go:10.2,10.26 1 1
+goprimer/myhex/helper.go:10.26,12.3 1 1
+goprimer/myhex/helper.go:13.2,13.17 1 1
+goprimer/myhex/myhex.go:5.32,7.24 2 1
+goprimer/myhex/myhex.go:7.24,13.3 4 1
+goprimer/myhex/myhex.go:14.2,14.12 1 1
+goprimer/myhex/myhex.go:17.40,18.21 1 1
+goprimer/myhex/myhex.go:18.21,20.3 1 1
+goprimer/myhex/myhex.go:21.2,22.38 2 1
+goprimer/myhex/myhex.go:22.38,24.10 2 1
+goprimer/myhex/myhex.go:24.10,26.4 1 1
+goprimer/myhex/myhex.go:28.3,29.10 2 1
+goprimer/myhex/myhex.go:29.10,31.4 1 1
+goprimer/myhex/myhex.go:33.3,34.15 2 1
+goprimer/myhex/myhex.go:36.2,36.18 1 1

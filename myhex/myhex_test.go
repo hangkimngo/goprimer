@@ -41,6 +41,7 @@ func TestDecode(t *testing.T) {
 		{"odd length", []byte("abc"), nil, false},
 		{"invalid character", []byte("zz"), nil, false},
 		{"partially valid", []byte("dezz"), nil, false},
+		{"invalid low nibble", []byte("dz"), nil, false},
 	}
 
 	for _, tt := range tests {
@@ -65,6 +66,34 @@ func TestDecode(t *testing.T) {
 				if !bytes.Equal(got, wantStd) {
 					t.Errorf("got %v, standard library returned %v", got, wantStd)
 				}
+			}
+		})
+	}
+}
+
+func TestHexIndex(t *testing.T) {
+	tests := []struct {
+		name   string
+		input  byte
+		want   byte
+		wantOK bool
+	}{
+		{"zero", '0', 0, true},
+		{"nine", '9', 9, true},
+		{"lowercase a", 'a', 10, true},
+		{"lowercase f", 'f', 15, true},
+		{"uppercase A", 'A', 10, true},
+		{"uppercase F", 'F', 15, true},
+		{"invalid", 'z', 0, false},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, ok := hexIndex(tt.input)
+
+			if got != tt.want || ok != tt.wantOK {
+				t.Errorf("hexIndex(%q) = (%d, %v), want (%d, %v)",
+					tt.input, got, ok, tt.want, tt.wantOK)
 			}
 		})
 	}

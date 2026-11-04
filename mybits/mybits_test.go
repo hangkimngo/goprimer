@@ -102,3 +102,26 @@ func TestReverse32(t *testing.T) {
 		})
 	}
 }
+
+func TestReverseBytes32(t *testing.T) {
+	tests := []struct {
+		name string
+		val  uint32
+	}{
+		{"0x00000000", 0x00000000},
+		{"0x01020304", 0x01020304},
+		{"0x12345678", 0x12345678},
+		{"0x000000FF", 0x000000FF},
+		{"0xFFFFFFFF", 0xFFFFFFFF},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := ReverseBytes32(tt.val)
+			want := bits.ReverseBytes32(tt.val)
+			if want != got {
+				t.Errorf("ReverseBytes32(%#08x) = %#08x, want match for %#08x", tt.val, got, want)
+			}
+		})
+	}
+}
